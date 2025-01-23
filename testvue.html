@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -99,6 +100,7 @@
         }
     </style>
 </head>
+
 <body>
     <div id="app">
         <div class="page-title">
@@ -132,6 +134,8 @@
     <!-- 引入插件 -->
     <script src="dynamic-counter.js"></script>
     <script>
+        // 安装插件
+        Vue.use(DynamicCounterPlugin)
         new Vue({
             el: '#app',
             data: {
@@ -157,4 +161,5 @@
         });
     </script>
 </body>
+
 </html>

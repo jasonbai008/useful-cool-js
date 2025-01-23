@@ -18,29 +18,33 @@
  *        formatThousands: true  // 可选，是否使用千分符，默认true
  *    });
  *
- * 2. Vue2使用:
- *    <!-- 引入Vue2和插件 -->
- *    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
- *    <script src="dynamic-counter.js"></script>
+ * 2. Vue项目使用:
+ *    // 方式一：通过 import 引入（推荐）
+ *    import { DynamicCounter, DynamicCounterPlugin } from './dynamic-counter'
+ *    
+ *    // 安装插件
+ *    Vue.use(DynamicCounterPlugin)
  *
- *    <!-- HTML结构 -->
- *    <!-- 使用v-counter指令，通过参数设置精度 -->
- *    <span v-counter:2="number"></span>
- *    <!-- 不需要精度时可以省略参数 -->
- *    <span v-counter="number"></span>
+ *    // 方式二：通过 CDN 引入
+ *    <script src="https://unpkg.com/useful-cool-js@latest/dynamic-counter.js"></script>
+ *    
+ *    // 安装插件
+ *    Vue.use(DynamicCounterPlugin)
  *
- *    <!-- Vue实例 -->
- *    new Vue({
+ *    // Vue 组件中使用
+ *    export default {
  *        mounted() {
+ *            // 初始化计数器（必需）
  *            window.counterInstance = new DynamicCounter({
  *                duration: 2,
  *                formatThousands: true
  *            });
- *        },
- *        data: {
- *            number: 876.50
  *        }
- *    });
+ *    }
+ *
+ *    <!-- 模板中使用 -->
+ *    <span v-counter="number"></span>              <!-- 不带小数点 -->
+ *    <span v-counter:2="price"></span>            <!-- 保留2位小数 -->
  *
  * 3. 属性说明:
  *    原生JS:
@@ -48,7 +52,7 @@
  *    - data-target: 必需，目标数值，支持正数、负数和小数
  *    - data-precision: 可选，小数点精度，默认为0
  *
- *    Vue2:
+ *    Vue指令:
  *    - v-counter: 必需，绑定目标数值
  *    - v-counter:2: 可选，通过参数设置精度，如:2表示2位小数
  *
@@ -63,21 +67,43 @@
  *        <span class="counter" data-target="876.50" data-precision="2"></span>
  *    </div>
  *
- *    Vue2:
+ *    Vue组件:
  *    <!-- 基础用法 -->
- *    <span v-counter="number"></span>
+ *    <template>
+ *        <div>
+ *            <span v-counter="number"></span>
+ *            <span v-counter:2="price"></span>
+ *            
+ *            <!-- 带货币符号 -->
+ *            <div class="counter-item">
+ *                <span class="currency">$</span>
+ *                <span v-counter:2="price"></span>
+ *            </div>
+ *        </div>
+ *    </template>
  *
- *    <!-- 带货币符号和2位小数 -->
- *    <div class="counter-item">
- *        <span class="currency">$</span>
- *        <span v-counter:2="price"></span>
- *    </div>
+ *    <script>
+ *    export default {
+ *        data() {
+ *            return {
+ *                number: 34482,
+ *                price: 876.50
+ *            }
+ *        },
+ *        mounted() {
+ *            window.counterInstance = new DynamicCounter({
+ *                duration: 2,
+ *                formatThousands: true
+ *            });
+ *        }
+ *    }
+ *    </script>
  *
  * 5. 特性:
  *    - 支持正数和负数
  *    - 支持小数点精度设置
  *    - 支持千分符格式化
- *    - 支持Vue2动态数据更新
+ *    - 支持Vue动态数据更新
  *    - 平滑的动画效果(60fps)
  *    - 无依赖，原生JavaScript实现
  */
@@ -164,32 +190,40 @@ class DynamicCounter {
   }
 }
 
-// 如果全局有Vue，就注册指令
-if (typeof window.Vue !== "undefined") {
-  // Vue插件安装方法
-  window.Vue.directive("counter", {
-    bind(el, binding) {
-      el.classList.add("counter");
-      el.setAttribute("data-target", binding.value);
-      if (binding.arg) {
-        el.setAttribute("data-precision", binding.arg);
-      }
-    },
-    update(el, binding) {
-      el.setAttribute("data-target", binding.value);
-      if (window.counterInstance) {
-        window.counterInstance.reinit();
-      }
-    },
-    unbind(el) {
-      el.classList.remove("counter");
-    },
-  });
-}
+// 创建 Vue 插件对象
+const DynamicCounterPlugin = {
+    install(Vue, options = {}) {
+        // 注册全局指令
+        Vue.directive("counter", {
+            bind(el, binding) {
+                el.classList.add("counter");
+                el.setAttribute("data-target", binding.value);
+                if (binding.arg) {
+                    el.setAttribute("data-precision", binding.arg);
+                }
+            },
+            update(el, binding) {
+                el.setAttribute("data-target", binding.value);
+                if (window.counterInstance) {
+                    window.counterInstance.reinit();
+                }
+            },
+            unbind(el) {
+                el.classList.remove("counter");
+            },
+        });
+    }
+};
 
-// 修改导出方式，支持Vue插件形式
+// 导出方式修改
 if (typeof module !== "undefined" && module.exports) {
-  module.exports = DynamicCounter;
+    // CommonJS 模块导出
+    module.exports = {
+        DynamicCounter,
+        DynamicCounterPlugin
+    };
 } else {
-  window.DynamicCounter = DynamicCounter;
+    // 浏览器环境
+    window.DynamicCounter = DynamicCounter;
+    window.DynamicCounterPlugin = DynamicCounterPlugin;
 }

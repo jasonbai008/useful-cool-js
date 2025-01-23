@@ -6,58 +6,24 @@
  * Github: https://github.com/jasonbai008/useful-cool-js
  *
  * 使用方法:
- * 1. 原生JS使用:
+ * 1. 引入方式:
  *    <script src="https://unpkg.com/useful-cool-js@latest/dynamic-counter.js"></script>
  *
- *    <!-- HTML结构 -->
+ * 2. HTML结构:
  *    <span class="counter" data-target="876.50" data-precision="2"></span>
  *
- *    <!-- 初始化 -->
+ * 3. 初始化:
  *    new DynamicCounter({
  *        duration: 2,           // 可选，动画持续时间（秒），默认2秒
  *        formatThousands: true  // 可选，是否使用千分符，默认true
  *    });
  *
- * 2. Vue项目使用:
- *    // 方式一：通过 import 引入（推荐）
- *    import { DynamicCounter, DynamicCounterPlugin } from './dynamic-counter'
- *    
- *    // 安装插件
- *    Vue.use(DynamicCounterPlugin)
- *
- *    // 方式二：通过 CDN 引入
- *    <script src="https://unpkg.com/useful-cool-js@latest/dynamic-counter.js"></script>
- *    
- *    // 安装插件
- *    Vue.use(DynamicCounterPlugin)
- *
- *    // Vue 组件中使用
- *    export default {
- *        mounted() {
- *            // 初始化计数器（必需）
- *            window.counterInstance = new DynamicCounter({
- *                duration: 2,
- *                formatThousands: true
- *            });
- *        }
- *    }
- *
- *    <!-- 模板中使用 -->
- *    <span v-counter="number"></span>              <!-- 不带小数点 -->
- *    <span v-counter:2="price"></span>            <!-- 保留2位小数 -->
- *
- * 3. 属性说明:
- *    原生JS:
+ * 4. 属性说明:
  *    - class="counter": 必需，标识这是一个计数器元素
  *    - data-target: 必需，目标数值，支持正数、负数和小数
  *    - data-precision: 可选，小数点精度，默认为0
  *
- *    Vue指令:
- *    - v-counter: 必需，绑定目标数值
- *    - v-counter:2: 可选，通过参数设置精度，如:2表示2位小数
- *
- * 4. 示例:
- *    原生JS:
+ * 5. 示例:
  *    <!-- 基础用法 -->
  *    <span class="counter" data-target="876"></span>
  *
@@ -67,43 +33,10 @@
  *        <span class="counter" data-target="876.50" data-precision="2"></span>
  *    </div>
  *
- *    Vue组件:
- *    <!-- 基础用法 -->
- *    <template>
- *        <div>
- *            <span v-counter="number"></span>
- *            <span v-counter:2="price"></span>
- *            
- *            <!-- 带货币符号 -->
- *            <div class="counter-item">
- *                <span class="currency">$</span>
- *                <span v-counter:2="price"></span>
- *            </div>
- *        </div>
- *    </template>
- *
- *    <script>
- *    export default {
- *        data() {
- *            return {
- *                number: 34482,
- *                price: 876.50
- *            }
- *        },
- *        mounted() {
- *            window.counterInstance = new DynamicCounter({
- *                duration: 2,
- *                formatThousands: true
- *            });
- *        }
- *    }
- *    </script>
- *
- * 5. 特性:
+ * 6. 特性:
  *    - 支持正数和负数
  *    - 支持小数点精度设置
  *    - 支持千分符格式化
- *    - 支持Vue动态数据更新
  *    - 平滑的动画效果(60fps)
  *    - 无依赖，原生JavaScript实现
  */
@@ -190,40 +123,11 @@ class DynamicCounter {
   }
 }
 
-// 创建 Vue 插件对象
-const DynamicCounterPlugin = {
-    install(Vue, options = {}) {
-        // 注册全局指令
-        Vue.directive("counter", {
-            bind(el, binding) {
-                el.classList.add("counter");
-                el.setAttribute("data-target", binding.value);
-                if (binding.arg) {
-                    el.setAttribute("data-precision", binding.arg);
-                }
-            },
-            update(el, binding) {
-                el.setAttribute("data-target", binding.value);
-                if (window.counterInstance) {
-                    window.counterInstance.reinit();
-                }
-            },
-            unbind(el) {
-                el.classList.remove("counter");
-            },
-        });
-    }
-};
-
-// 导出方式修改
+// 导出
 if (typeof module !== "undefined" && module.exports) {
     // CommonJS 模块导出
-    module.exports = {
-        DynamicCounter,
-        DynamicCounterPlugin
-    };
+    module.exports = DynamicCounter;
 } else {
     // 浏览器环境
     window.DynamicCounter = DynamicCounter;
-    window.DynamicCounterPlugin = DynamicCounterPlugin;
 }

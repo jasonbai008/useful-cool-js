@@ -1,4 +1,5 @@
 # useful-cool-js
+
 a collection of cool js tools
 
 ## Plugins
@@ -6,8 +7,10 @@ a collection of cool js tools
 1. [Circle Follower 鼠标跟随插件](#鼠标跟随插件)
 2. [Smooth Scroller 平滑滚动插件](#平滑滚动插件)
 3. [Dynamic Counter 数字动画插件](#数字动画插件)
+4. [Dynamic Counter Vue 数字动画插件 Vue 版](#数字动画插件Vue版)
 
 ## 鼠标跟随插件
+
 一个简单优雅的鼠标跟随效果插件。
 
 ### 使用方式
@@ -90,7 +93,6 @@ follower.destroy(); // 销毁实例
 
 - [demo](https://jasonbai008.github.io/circle-follower/test.html)
 
-
 ## 数字动画插件
 
 一个轻量级的数字递增/递减动画插件，支持千分符格式化，可自定义动画时间。
@@ -123,22 +125,20 @@ follower.destroy(); // 销毁实例
 
 <!-- 带货币符号和2位小数 -->
 <div class="counter-item">
-    <span class="currency">$</span>
-    <span class="counter" data-target="876.50" data-precision="2"></span>
+  <span class="currency">$</span>
+  <span class="counter" data-target="876.50" data-precision="2"></span>
 </div>
 
 <!-- 百分比格式 -->
-<div class="counter-item">
-    <span class="counter" data-target="-64.82" data-precision="2"></span><span>%</span>
-</div>
+<div class="counter-item"><span class="counter" data-target="-64.82" data-precision="2"></span><span>%</span></div>
 ```
 
 #### 初始化
 
 ```javascript
 new DynamicCounter({
-    duration: 2,           // 可选，动画持续时间（秒），默认2秒
-    formatThousands: true  // 可选，是否使用千分符，默认true
+  duration: 2, // 可选，动画持续时间（秒），默认2秒
+  formatThousands: true, // 可选，是否使用千分符，默认true
 });
 ```
 
@@ -148,3 +148,28 @@ new DynamicCounter({
 | --------------- | ------- | ------ | ---------------------- |
 | duration        | Number  | 2      | 动画持续时间，单位：秒 |
 | formatThousands | Boolean | true   | 是否启用千分符格式化   |
+
+## 数字动画插件 Vue 版
+
+一个基于 Vue 的数字动画插件，支持千分符格式化，可自定义动画时间。
+
+### 使用方法
+
+1. 引入并注册插件:
+
+```js
+import DynamicCounterVue from "./dynamic-counter-vue";
+Vue.use(DynamicCounterVue, {
+  duration: 2, // 可选，动画持续时间（秒），默认2秒
+  formatThousands: true, // 可选，是否使用千分符，默认true
+});
+```
+
+2. 在组件中使用:
+
+```html
+<!-- 不带小数点  -->
+<span v-counter="number"></span>
+<!-- 保留2位小数 -->
+<span v-counter:2="price"></span>
+```

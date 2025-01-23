@@ -3,11 +3,9 @@ a collection of cool js tools
 
 ## Plugins
 
-1. [Circle Follower 鼠标跟随插件](https://github.com/jasonbai008/useful-cool-js/blob/main/circle-follower.js)
-2. [Smooth Scroller 平滑滚动插件](https://github.com/jasonbai008/useful-cool-js/blob/main/smooth-scroller.js)
-3. [Dynamic Counter 数字动画插件](https://github.com/jasonbai008/useful-cool-js/blob/main/dynamic-counter.js)
-
-
+1. [Circle Follower 鼠标跟随插件](#鼠标跟随插件)
+2. [Smooth Scroller 平滑滚动插件](#平滑滚动插件)
+3. [Dynamic Counter 数字动画插件](#数字动画插件)
 
 ## 鼠标跟随插件
 一个简单优雅的鼠标跟随效果插件。
@@ -93,7 +91,7 @@ follower.destroy(); // 销毁实例
 - [demo](https://jasonbai008.github.io/circle-follower/test.html)
 
 
-## Dynamic Counter 数字动画插件
+## 数字动画插件
 
 一个轻量级的数字递增/递减动画插件，支持千分符格式化，可自定义动画时间。
 

@@ -1,5 +1,5 @@
 {
-  "name": "cool-js",
+  "name": "useful-cool-js",
   "version": "1.0.0",
   "description": "a collection of fun js plugins",
   "main": "index.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jasonbai008/cool-js.git"
+    "url": "git+https://github.com/jasonbai008/useful-cool-js.git"
   },
   "keywords": [
     "fun"
@@ -16,7 +16,7 @@
   "author": "Jason Bai",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jasonbai008/cool-js/issues"
+    "url": "https://github.com/jasonbai008/useful-cool-js/issues"
   },
-  "homepage": "https://github.com/jasonbai008/cool-js#readme"
+  "homepage": "https://github.com/jasonbai008/useful-cool-js#readme"
 }

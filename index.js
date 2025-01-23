@@ -1,1 +1,1 @@
-console.log("Welcome to use COOL-JS !");
+console.log("Welcome to use USEFUL-COOL-JS !");

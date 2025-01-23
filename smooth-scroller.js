@@ -2,10 +2,10 @@
  * 平滑滚动插件 (Smooth Scroll Plugin)
  * 
  * Author: Jason Bai & Claude-3.5-sonnet
- * Github: https://github.com/jasonbai008/circle-follower
+ * Github: https://github.com/jasonbai008/useful-cool-js
  * 
  * 使用方法:
- * <script src="https://unpkg.com/circle-follower@latest/smoothScroller.js"></script>
+ * <script src="https://unpkg.com/useful-cool-js@latest/smooth-scroller.js"></script>
  * 
  * 插件内部默认配置参数：
  * new SmoothScroller({

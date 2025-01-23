@@ -17,6 +17,9 @@ a collection of cool js tools
 
 直接在 HTML 中引入 `dynamic-counter.js` 文件：
 
+```html
+<script src="https://unpkg.com/useful-cool-js@latest/dynamic-counter.js"></script>
+```
 
 ### 使用方法
 
@@ -24,6 +27,7 @@ a collection of cool js tools
 
 在 HTML 中添加带有 `counter` 类名的元素，使用 `data-target` 属性设置目标数值，可选使用 `data-precision` 属性设置小数点精度：
 
+```html
 <!-- 基础用法 -->
 <span class="counter" data-target="876"></span>
 
@@ -37,9 +41,16 @@ a collection of cool js tools
 <div class="counter-item">
     <span class="counter" data-target="-64.82" data-precision="2"></span><span>%</span>
 </div>
+```
 
 #### 初始化
 
+```javascript
+new DynamicCounter({
+    duration: 2,           // 可选，动画持续时间（秒），默认2秒
+    formatThousands: true  // 可选，是否使用千分符，默认true
+});
+```
 
 ### 配置选项
 

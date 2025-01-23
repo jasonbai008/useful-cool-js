@@ -5,7 +5,9 @@
  * Author Jason Bai
  * Github: https://github.com/jasonbai008/useful-cool-js
  * 
- * 使用方法:
+ * 使用方法: 
+ * <script src="https://unpkg.com/useful-cool-js@latest/dynamic-counter.js"></script>
+ * 
  * 1. HTML结构:
  *    <span class="counter" data-target="876.50" data-precision="2"></span>
  * 

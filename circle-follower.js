@@ -2,16 +2,16 @@
  * 鼠标跟随插件
  *
  * Author: Jason Bai & Claude-3.5-sonnet
- * Github: https://github.com/jasonbai008/circle-follower
+ * Github: https://github.com/jasonbai008/useful-cool-js
  *
  * 使用示例：
  * 1. 引入插件：普通引入或模块儿化引入，二选一
  *
  * // 普通引入
- * <script src="https://unpkg.com/circle-follower@latest/index.js"></script>
+ * <script src="https://unpkg.com/useful-cool-js@latest/circle-follower.js"></script>
  *
  * // 模块化引入
- * import Follower from 'circle-follower'
+ * import Follower from 'useful-cool-js/circle-follower.js'
  *
  * 2. 实例化并配置
  * const follower = new Follower({

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数字递增</title>
+    <!-- 添加样式 -->
+    <style>
+        body {
+            background: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        /* 容器样式 */
+        .counter-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* 卡片样式 */
+        .counter-item {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            flex: 1;
+            min-width: 200px;
+            transition: transform 0.3s ease;
+        }
+
+        .counter-item:hover {
+            transform: translateY(-5px);
+        }
+
+        /* 数字样式 */
+        .counter {
+            font-size: 48px;
+            font-weight: bold;
+            color: #2196F3;
+            display: inline-block;
+        }
+
+        /* 符号样式，统一货币符号和百分比符号 */
+        .currency,
+        .counter-item span:last-child:not(.counter) {
+            font-size: 32px;
+            font-weight: bold;
+            color: #666;
+            margin: 0 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 使用flex布局容器包裹计数器 -->
+    <div class="counter-container">
+        <div class="counter-item">
+            <span class="currency">$</span><span class="counter" data-target="876.50" data-precision="2"></span>
+        </div>
+        <div class="counter-item">
+            <span class="currency">$</span><span class="counter" data-target="34482"></span>
+        </div>
+        <div class="counter-item">
+            <span class="counter" data-target="-64.82" data-precision="2"></span><span>%</span>
+        </div>
+    </div>
+
+    <!-- 引入插件 -->
+    <script src="dynamic-counter.js"></script>
+    <script>
+        // 初始化插件
+        new DynamicCounter({
+            duration: 2,
+            formatThousands: true
+        });   
+    </script>
+</body>
+
+</html>

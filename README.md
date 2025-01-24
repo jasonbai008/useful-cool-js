@@ -158,7 +158,9 @@ new DynamicCounter({
 1. 引入并注册插件:
 
 ```js
-import DynamicCounterVue from "./dynamic-counter-vue";
+import Vue from 'vue'
+import DynamicCounterVue from 'useful-cool-js/dynamic-counter-vue'
+
 Vue.use(DynamicCounterVue, {
   duration: 2, // 可选，动画持续时间（秒），默认2秒
   formatThousands: true, // 可选，是否使用千分符，默认true

@@ -8,6 +8,7 @@ a collection of cool js tools
 2. [Smooth Scroller 平滑滚动插件](#平滑滚动插件)
 3. [Dynamic Counter 数字动画插件](#数字动画插件)
 4. [Dynamic Counter Vue 数字动画插件 Vue 版](#数字动画插件Vue版)
+5. [Div Scroller 双向跑马灯插件](#双向跑马灯插件)
 
 ## 鼠标跟随插件
 
@@ -158,8 +159,8 @@ new DynamicCounter({
 1. 引入并注册插件:
 
 ```js
-import Vue from 'vue'
-import DynamicCounterVue from 'useful-cool-js/dynamic-counter-vue'
+import Vue from "vue";
+import DynamicCounterVue from "useful-cool-js/dynamic-counter-vue";
 
 Vue.use(DynamicCounterVue, {
   duration: 2, // 可选，动画持续时间（秒），默认2秒
@@ -175,3 +176,78 @@ Vue.use(DynamicCounterVue, {
 <!-- 保留2位小数 -->
 <span v-counter:2="price"></span>
 ```
+
+## 双向跑马灯插件
+
+一个轻量级的双向滚动走马灯插件，支持鼠标滚轮控制方向，自动无缝滚动，鼠标悬停暂停等功能。
+
+### 特性
+
+- 自动无缝循环滚动
+- 支持鼠标滚轮控制滚动方向
+- 鼠标悬停自动暂停
+- 自动填充容器宽度
+- 可自定义滚动速度
+- 无依赖，原生JavaScript实现
+
+### 安装
+
+直接在HTML中引入 `div-scroller.js` 文件：
+
+```html
+<script src="https://unpkg.com/useful-cool-js@latest/div-scroller.js"></script>
+```
+
+### 使用方法
+
+#### HTML结构
+
+```html
+<div class="scroll-container">
+    <div class="scroll-item">内容1</div>
+    <div class="scroll-item">内容2</div>
+    <div class="scroll-item">内容3</div>
+</div>
+```
+
+#### 初始化
+
+```javascript
+const scroller = new DivScroller({
+    container: document.querySelector('.scroll-container'), // 容器元素
+    speed: 1,  // 可选，滚动速度，默认1
+    direction: 'right'  // 可选，初始滚动方向，默认right
+});
+
+// 开始滚动
+scroller.start();
+```
+
+### 配置选项
+
+| 参数      | 类型     | 默认值  | 说明                           |
+|-----------|----------|---------|--------------------------------|
+| container | Element  | -       | 容器元素（必填）               |
+| speed     | Number   | 1       | 滚动速度                       |
+| direction | String   | 'right' | 初始滚动方向，可选 'left'/'right' |
+
+### 实例方法
+
+| 方法名         | 说明                     |
+|---------------|--------------------------|
+| start()       | 开始滚动                 |
+| stop()        | 停止滚动                 |
+| setDirection(direction) | 设置滚动方向('left'/'right') |
+
+### 交互说明
+
+- 向上滚动鼠标滚轮：内容向左滚动
+- 向下滚动鼠标滚轮：内容向右滚动
+- 鼠标悬停在内容上：暂停滚动
+- 鼠标移出内容：继续滚动
+
+### 注意事项
+
+1. 容器元素需要设置固定宽度或100%宽度
+2. 内容元素会被自动克隆以实现无缝滚动效果
+3. 插件不会干预容器和内容的样式，开发者可以自由设置样式

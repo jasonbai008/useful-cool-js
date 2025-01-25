@@ -23,10 +23,18 @@ function formatNumber(num, precision = 0, useThousands = true) {
   // 处理小数点
   const fixedNum = Number(num).toFixed(precision);
 
-  if (!useThousands) return fixedNum;
+  if (!useThousands) {
+    return fixedNum;
+  }
 
-  // 添加千分符
-  return Number(fixedNum).toLocaleString();
+  // 分割整数和小数部分
+  const [intPart, decimalPart] = fixedNum.split(".");
+
+  // 添加千分符到整数部分
+  const formattedInt = intPart.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
+  // 如果有小数部分，则组合返回
+  return decimalPart ? `${formattedInt}.${decimalPart}` : formattedInt;
 }
 
 // 更新计数器

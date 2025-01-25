@@ -73,18 +73,10 @@ class DynamicCounter {
     // 处理小数点
     const fixedNum = Number(num).toFixed(precision);
 
-    if (!this.options.formatThousands) {
-      return fixedNum;
-    }
+    if (!this.options.formatThousands) return fixedNum;
 
-    // 分割整数和小数部分
-    const [intPart, decimalPart] = fixedNum.split(".");
-
-    // 添加千分符到整数部分
-    const formattedInt = intPart.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-
-    // 如果有小数部分，则组合返回
-    return decimalPart ? `${formattedInt}.${decimalPart}` : formattedInt;
+    // 添加千分符
+    return Number(fixedNum).toLocaleString();
   }
 
   updateCounter(counter) {
@@ -96,11 +88,7 @@ class DynamicCounter {
     const current = parseFloat(counter.innerText.replace(/,/g, ""));
 
     // 计算每次增加的值，考虑精度
-    const increment =
-      Math.ceil(
-        (Math.abs(target) / (this.options.duration * 60)) *
-          Math.pow(10, precision)
-      ) / Math.pow(10, precision);
+    const increment = Math.ceil((Math.abs(target) / (this.options.duration * 60)) * Math.pow(10, precision)) / Math.pow(10, precision);
 
     let newValue = current;
 
@@ -125,9 +113,9 @@ class DynamicCounter {
 
 // 导出
 if (typeof module !== "undefined" && module.exports) {
-    // CommonJS 模块导出
-    module.exports = DynamicCounter;
+  // CommonJS 模块导出
+  module.exports = DynamicCounter;
 } else {
-    // 浏览器环境
-    window.DynamicCounter = DynamicCounter;
+  // 浏览器环境
+  window.DynamicCounter = DynamicCounter;
 }

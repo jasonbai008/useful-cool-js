@@ -3,11 +3,11 @@
  * 一个轻量级的数字递增/递减动画Vue指令
  *
  * 使用方法:
- * 
- * 1. 引入并注册插件:    
+ *
+ * 1. 引入并注册插件:
  *
  *    import DynamicCounterVue from 'useful-cool-js/dynamic-counter-vue'
- * 
+ *
  *    Vue.use(DynamicCounterVue, {
  *        duration: 2,           // 可选，动画持续时间（秒），默认2秒
  *        formatThousands: true  // 可选，是否使用千分符，默认true
@@ -23,18 +23,10 @@ function formatNumber(num, precision = 0, useThousands = true) {
   // 处理小数点
   const fixedNum = Number(num).toFixed(precision);
 
-  if (!useThousands) {
-    return fixedNum;
-  }
+  if (!useThousands) return fixedNum;
 
-  // 分割整数和小数部分
-  const [intPart, decimalPart] = fixedNum.split(".");
-
-  // 添加千分符到整数部分
-  const formattedInt = intPart.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-
-  // 如果有小数部分，则组合返回
-  return decimalPart ? `${formattedInt}.${decimalPart}` : formattedInt;
+  // 添加千分符
+  return Number(fixedNum).toLocaleString();
 }
 
 // 更新计数器
@@ -45,9 +37,7 @@ function updateCounter(el, target, options = {}) {
   const current = parseFloat(el.innerText.replace(/,/g, "")) || 0;
 
   // 计算每次增加的值
-  const increment =
-    Math.ceil((Math.abs(target) / (duration * 60)) * Math.pow(10, precision)) /
-    Math.pow(10, precision);
+  const increment = Math.ceil((Math.abs(target) / (duration * 60)) * Math.pow(10, precision)) / Math.pow(10, precision);
 
   let newValue = current;
 

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>平滑滚动测试</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .content {
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            will-change: transform;
+        }
+
+        .section {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            color: white;
+        }
+
+        .section:nth-child(odd) {
+            background-color: #5ab9f8;
+        }
+
+        .section:nth-child(even) {
+            background-color: #fd7c6d;
+        }
+
+        /* 添加控制面板样式 */
+        .controls {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(0,0,0,0.8);
+            padding: 20px;
+            border-radius: 10px;
+            color: white;
+            z-index: 1000;
+        }
+        .control-item {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 添加控制面板 -->
+    <div class="controls">
+        <div class="control-item">
+            <label>
+                速度衰减度:
+                <input type="range" min="0" max="1" step="0.01" value="0.9" id="friction">
+                <span id="frictionValue">0.9</span>
+            </label>
+        </div>
+        <div class="control-item">
+            <label>
+                滚动灵敏度:
+                <input type="range" min="0" max="1" step="0.01" value="0.12" id="sensitivity">
+                <span id="sensitivityValue">0.12</span>
+            </label>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="section">第1屏</div>
+        <div class="section">第2屏</div>
+        <div class="section">第3屏</div>
+        <div class="section">第4屏</div>
+        <div class="section">第5屏</div>
+        <div class="section">第6屏</div>
+        <div class="section">第7屏</div>
+        <div class="section">第8屏</div>
+        <div class="section">第9屏</div>
+        <div class="section">第10屏</div>
+    </div>
+    <script src="../smooth-scroller.js"></script>
+    <script>
+        // 实例化平滑滚动插件
+        let smoother = new SmoothScroller({
+            friction: 0.9,        // 速度衰减系数，默认0.9
+            sensitivity: 0.12     // 滚动灵敏度，默认0.12
+        });
+
+        // 监听速度衰减系数滑块变化
+        const friction = document.getElementById('friction');
+        const frictionValue = document.getElementById('frictionValue');
+        
+        friction.addEventListener('input', (e) => {
+            const value = parseFloat(e.target.value);
+            frictionValue.textContent = value;
+            smoother.friction = value;
+        });
+
+        // 监听滚动灵敏度滑块变化
+        const sensitivity = document.getElementById('sensitivity');
+        const sensitivityValue = document.getElementById('sensitivityValue');
+        
+        sensitivity.addEventListener('input', (e) => {
+            const value = parseFloat(e.target.value);
+            sensitivityValue.textContent = value;
+            smoother.sensitivity = value;
+        });
+    </script>
+</body>
+
+</html>

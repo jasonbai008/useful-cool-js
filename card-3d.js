@@ -8,7 +8,7 @@ class Card3D {
         
         // 内部固定配置
         this.perspective = 1000;  // 透视值
-        this.selector = '.d3-card'; // 选择器
+        this.selector = '.card-3d'; // 选择器
         
         this.init();
     }

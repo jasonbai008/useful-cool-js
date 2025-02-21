@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3D Card Plugin Demo</title>
+    <title>Card 3D Plugin Demo</title>
     <style>
         body {
             margin: 0;
@@ -16,7 +16,7 @@
         }
 
         /* 卡片样式 */
-        .d3-card {
+        .card-3d {
             width: 300px;
             height: 200px;
             background: white;
@@ -24,18 +24,18 @@
         }
 
         /* 第二个卡片样式 */
-        .d3-card.card2 {
+        .card-3d.card2 {
             background: #ffeb3b;
         }
     </style>
 </head>
 <body>
     <!-- 多个卡片示例 -->
-    <div class="d3-card"></div>
-    <div class="d3-card card2"></div>
+    <div class="card-3d">Card</div>
+    <div class="card-3d card2">3D</div>
 
     <!-- 引入插件 -->
-    <script src="3d-card.js"></script>
+    <script src="../card-3d.js"></script>
     <script>
         // 初始化插件，只配置旋转角度
         new Card3D({

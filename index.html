@@ -16,23 +16,29 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             line-height: 1.6;
             color: #333;
-            background: #f5f5f5;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f1 100%);
+            min-height: 100vh;
+            overflow-y: hidden;
         }
 
         .header {
             text-align: center;
-            margin: 40px 0;
+            margin: 10px 0 20px;
+            padding: 20px;
+            position: relative;
         }
 
         .header h1 {
-            font-size: 2.5em;
+            font-size: 2.8em;
             color: #2c3e50;
             margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
         }
 
         .header p {
-            color: #666;
-            font-size: 1.2em;
+            color: #34495e;
+            font-size: 1.3em;
+            min-height: 30px;
         }
 
         .plugins-container {
@@ -42,20 +48,39 @@
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 20px;
             padding: 20px;
-            padding-top: 10px;
+            padding-top: 0px;
         }
 
         .plugin-card {
-            background: white;
-            border-radius: 10px;
-            padding: 15px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 18px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
             text-align: center;
         }
 
+        .plugin-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #3f05c6, #5539e9);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
         .plugin-card:hover {
-            transform: translateY(-5px);
+            /* transform: translateY(-5px); */
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .plugin-card:hover::before {
+            opacity: 1;
         }
 
         .plugin-title {
@@ -64,41 +89,43 @@
         }
 
         .plugin-title h2 {
-            font-size: 1.5em;
+            font-size: 1.4em;
             color: #2c3e50;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
         }
 
         .plugin-title .en-name {
-            color: #666;
+            color: #7f8c8d;
             font-size: 0.9em;
+            font-style: italic;
         }
 
         .plugin-desc {
             text-align: left;
-            color: #666;
-            margin-bottom: 15px;
+            color: #5a6a7a;
+            margin: 15px 0;
             min-height: 60px;
-            font-size: 0.9em;
+            font-size: 0.95em;
+            line-height: 1.7;
         }
 
         .demo-link {
             display: inline-block;
-            padding: 4px 12px;
-            background: rgba(63, 5, 198, 0.8);
+            padding: 6px 20px;
+            background: linear-gradient(135deg, #3f05c6 0%, #5539e9 100%);
             color: white;
             text-decoration: none;
-            border-radius: 4px;
-            font-size: 0.85em;
+            border-radius: 25px;
+            font-size: 0.9em;
             transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            min-width: 90px;
+            border: none;
+            font-weight: 500;
+            text-align: center;
         }
 
         .demo-link:hover {
-            background: rgba(85, 59, 233, 0.9);
-            transform: translateY(-1px);
-            box-shadow: 0 2px 8px rgba(52, 152, 219, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(85, 57, 233, 0.4);
         }
 
         .github-corner {
@@ -117,6 +144,17 @@
             transform: scale(1.4);
             border-color: rgba(52, 152, 219, 0.8);
             background-color: rgba(52, 152, 219, 0.05);
+        }
+
+        /* GitHub 角标动画优化 */
+        .github-corner:hover .octo-arm {
+            animation: octocat-wave 560ms ease-in-out;
+        }
+
+        @keyframes octocat-wave {
+            0%, 100% { transform: rotate(0) }
+            20%, 60% { transform: rotate(-25deg) }
+            40%, 80% { transform: rotate(10deg) }
         }
     </style>
 </head>
@@ -139,7 +177,7 @@
 
     <header class="header">
         <h1>Useful Cool JS</h1>
-        <p>一组实用的 JavaScript 插件集合</p>
+        <p><span id="typed"></span></p>
     </header>
 
     <div class="plugins-container">
@@ -215,22 +253,36 @@
         </div>
     </div>
 
+    <!-- 添加 Typed.js -->
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <script src="card-3d.js"></script>
     <script src="circle-follower.js"></script>
     <script>
+        // 初始化打字效果
+        new Typed('#typed', {
+            strings: ['一组实用的 JavaScript 插件集合'],
+            typeSpeed: 80,
+            backSpeed: 50,
+            startDelay: 500,
+            showCursor: true,
+            cursorChar: '|',
+            loop: false
+        });
+
         // 初始化鼠标跟随效果
         new Follower({
             size: 30,
-            borderColor: 'rgba(52, 152, 219, 0.5)',
+            borderColor: 'rgba(63, 5, 198, 0.5)',
             borderWidth: 2,
             bgColor: 'transparent',
             speed: 0.15,
             hoverSize: 60,
             hoverBackdropFilter: 'invert(1)',
         });
-        // 初始化插件，只配置旋转角度
+
+        // 初始化3D卡片效果
         new Card3D({
-            rotation: 10    // 可选，默认为 10
+            rotation: 8
         });
     </script>
 </body>

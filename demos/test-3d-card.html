@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Card Plugin Demo</title>
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: #3184ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+
+        /* 卡片样式 */
+        .d3-card {
+            width: 300px;
+            height: 200px;
+            background: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 第二个卡片样式 */
+        .d3-card.card2 {
+            background: #ffeb3b;
+        }
+    </style>
+</head>
+<body>
+    <!-- 多个卡片示例 -->
+    <div class="d3-card"></div>
+    <div class="d3-card card2"></div>
+
+    <!-- 引入插件 -->
+    <script src="3d-card.js"></script>
+    <script>
+        // 初始化插件，只配置旋转角度
+        new Card3D({
+            rotation: 10    // 可选，默认为 10
+        });
+    </script>
+</body>
+</html>

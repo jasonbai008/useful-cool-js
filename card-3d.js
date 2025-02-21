@@ -1,3 +1,25 @@
+/**
+ * Card3D - 一个轻量级的卡片3D悬浮效果插件
+ * 
+ * 特性：
+ * - 根据鼠标位置实现卡片3D倾斜效果
+ * - 支持多个卡片同时使用
+ * - 可自定义最大旋转角度
+ * - 平滑的动画过渡效果
+ * 
+ * 使用方法：
+ * 1. HTML结构：
+ *    <div class="card-3d">Card Content</div>
+ * 
+ * 2. 初始化插件：
+ *    new Card3D({
+ *      rotation: 10  // 可选，最大旋转角度，默认10度
+ *    });
+ * 
+ * 配置选项：
+ * @param {Object} options - 配置对象
+ * @param {Number} options.rotation - 最大旋转角度，默认10度
+ */
 class Card3D {
     constructor(options = {}) {
         // 默认配置

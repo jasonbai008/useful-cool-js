@@ -9,6 +9,7 @@ a collection of cool js tools
 3. [Dynamic Counter 数字动画插件](#数字动画插件)
 4. [Dynamic Counter Vue 数字动画插件 Vue 版](#数字动画插件Vue版)
 5. [Div Scroller 双向跑马灯插件](#双向跑马灯插件)
+6. [Card3D 卡片3D效果插件](#Card3D-卡片3D效果插件)
 
 ## 鼠标跟随插件
 
@@ -251,3 +252,81 @@ scroller.start();
 1. 容器元素需要设置固定宽度或100%宽度
 2. 内容元素会被自动克隆以实现无缝滚动效果
 3. 插件不会干预容器和内容的样式，开发者可以自由设置样式
+
+## Card3D 卡片3D效果插件
+
+一个轻量级的卡片3D悬浮效果插件，根据鼠标位置实现卡片的3D倾斜效果。
+
+### 特性
+
+- 根据鼠标位置实现卡片3D倾斜效果
+- 支持多个卡片同时使用
+- 可自定义最大旋转角度
+- 平滑的动画过渡效果
+- 无依赖，原生JavaScript实现
+
+### 安装
+
+直接在HTML中引入 `card-3d.js` 文件：
+
+```html
+<script src="https://unpkg.com/useful-cool-js@latest/card-3d.js"></script>
+```
+
+### 使用方法
+
+#### HTML结构
+
+```html
+<!-- 添加带有card-3d类名的元素 -->
+<div class="card-3d">Card Content</div>
+
+<!-- 支持多个卡片 -->
+<div class="card-3d">Card 1</div>
+<div class="card-3d">Card 2</div>
+```
+
+#### 初始化
+
+```javascript
+// 使用默认配置
+new Card3D();
+
+// 或者自定义配置
+new Card3D({
+    rotation: 12  // 自定义最大旋转角度
+});
+```
+
+### 配置选项
+
+| 参数     | 类型   | 默认值 | 说明           |
+|----------|--------|--------|----------------|
+| rotation | Number | 10     | 最大旋转角度   |
+
+### 样式建议
+
+为了获得最佳效果，建议给卡片元素添加以下样式：
+
+```css
+.card-3d {
+    /* 基础尺寸 */
+    width: 300px;
+    height: 200px;
+    
+    /* 玻璃态效果 */
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    
+    /* 阴影和边框 */
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+```
+
+### 注意事项
+
+1. 确保目标元素具有 `card-3d` 类名
+2. 建议给卡片添加过渡效果以获得更平滑的动画
+3. 插件会自动为卡片创建透视效果容器

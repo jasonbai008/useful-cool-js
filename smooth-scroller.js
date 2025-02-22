@@ -1,11 +1,15 @@
 /**
  * 平滑滚动插件 (Smooth Scroll Plugin)
  * 
- * Author: Jason Bai & Claude-3.5-sonnet
+ * Author: Jason Bai <byygkcg@163.com>
  * Github: https://github.com/jasonbai008/useful-cool-js
  * 
  * 使用方法:
+ * // 普通引入
  * <script src="https://unpkg.com/useful-cool-js@latest/smooth-scroller.js"></script>
+ *
+ * // 模块化引入
+ * import 'useful-cool-js/smooth-scroller.js'
  * 
  * 插件内部默认配置参数：
  * new SmoothScroller({
@@ -189,8 +193,3 @@ class SmoothScroller {
     }
   }
 }
-
-// 等待DOM加载完成后初始化，这里注释，需要用户手动实例化
-// window.addEventListener('DOMContentLoaded', () => {
-//   new SmoothScroller();
-// });

@@ -1,17 +1,17 @@
 /**
  * 鼠标跟随插件
  *
- * Author: Jason Bai & Claude-3.5-sonnet
+ * Author: Jason Bai <byygkcg@163.com>
  * Github: https://github.com/jasonbai008/useful-cool-js
  *
  * 使用示例：
  * 1. 引入插件：普通引入或模块儿化引入，二选一
  *
  * // 普通引入
- * <script src="https://unpkg.com/useful-cool-js@latest/circle-follower.js"></script>
+ * <script src="https://unpkg.com/useful-cool-js@latest/follower.js"></script>
  *
  * // 模块化引入
- * import Follower from 'useful-cool-js/circle-follower.js'
+ * import 'useful-cool-js/follower.js'
  *
  * 2. 实例化并配置
  * const follower = new Follower({
@@ -47,7 +47,7 @@ class Follower {
     // 默认配置
     this.options = {
       size: 30,
-      bgColor: 'transparent',
+      bgColor: "transparent",
       borderColor: "#00c569",
       borderWidth: 2,
       hoverSize: 60,
@@ -167,12 +167,4 @@ class Follower {
     // 清除单例引用
     Follower.instance = null;
   }
-}
-
-// 绑定到全局
-window.Follower = Follower;
-
-// 如果是在模块化环境下使用
-if (typeof module !== "undefined" && module.exports) {
-  module.exports = Follower;
 }

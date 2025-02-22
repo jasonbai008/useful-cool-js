@@ -2,12 +2,14 @@
  * DynamicCounter - 数字动画计数器插件
  * 一个轻量级的数字递增/递减动画插件，支持千分符格式化和小数点精度设置
  *
- * Author Jason Bai
+ * Author: Jason Bai <byygkcg@163.com>
  * Github: https://github.com/jasonbai008/useful-cool-js
  *
  * 使用方法:
  * 1. 引入方式:
  *    <script src="https://unpkg.com/useful-cool-js@latest/dynamic-counter.js"></script>
+ *    或：
+ *    import 'useful-cool-js/dynamic-counter.js'
  *
  * 2. HTML结构:
  *    <span class="counter" data-target="876.50" data-precision="2"></span>
@@ -117,13 +119,4 @@ class DynamicCounter {
       requestAnimationFrame(() => this.updateCounter(counter));
     }
   }
-}
-
-// 导出
-if (typeof module !== "undefined" && module.exports) {
-  // CommonJS 模块导出
-  module.exports = DynamicCounter;
-} else {
-  // 浏览器环境
-  window.DynamicCounter = DynamicCounter;
 }

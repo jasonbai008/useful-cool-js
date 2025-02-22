@@ -2,14 +2,32 @@
 
 a collection of cool js tools
 
+## 统一使用示例
+
+1. CND 引入：
+
+```html
+<script src="https://unpkg.com/useful-cool-js@latest/follower.js"></script>
+```
+
+2. 模块化儿引入：
+
+```sh
+npm install useful-cool-js
+```
+
+```js
+import "useful-cool-js/follower.js";
+```
+
 ## Plugins
 
-1. [Circle Follower 鼠标跟随插件](#鼠标跟随插件)
+1. [Follower 鼠标跟随插件](#鼠标跟随插件)
 2. [Smooth Scroller 平滑滚动插件](#平滑滚动插件)
 3. [Dynamic Counter 数字动画插件](#数字动画插件)
 4. [Dynamic Counter Vue 数字动画插件 Vue 版](#数字动画插件Vue版)
 5. [Div Scroller 双向跑马灯插件](#双向跑马灯插件)
-6. [Card3D 卡片3D效果插件](#Card3D-卡片3D效果插件)
+6. [Card3D 卡片 3D 效果插件](#Card3D-卡片3D效果插件)
 
 ## 鼠标跟随插件
 
@@ -20,7 +38,7 @@ a collection of cool js tools
 #### 方式一：通过 script 标签直接引入
 
 ```html
-<script src="https://unpkg.com/circle-follower@latest/index.js"></script>
+<script src="https://unpkg.com/useful-cool-js@latest/follower.js"></script>
 <script>
   // 创建实例
   const follower = new Follower({
@@ -81,7 +99,7 @@ follower.destroy(); // 销毁实例
 ### 使用方式
 
 ```html
-<script src="https://unpkg.com/circle-follower@latest/smoothScroller.js"></script>
+<script src="https://unpkg.com/useful-cool-js@latest/smooth-scroller.js"></script>
 <script>
   // 实例化平滑滚动插件
   new SmoothScroller({
@@ -90,10 +108,6 @@ follower.destroy(); // 销毁实例
   });
 </script>
 ```
-
-### Demo
-
-- [demo](https://jasonbai008.github.io/circle-follower/test.html)
 
 ## 数字动画插件
 
@@ -189,11 +203,11 @@ Vue.use(DynamicCounterVue, {
 - 鼠标悬停自动暂停
 - 自动填充容器宽度
 - 可自定义滚动速度
-- 无依赖，原生JavaScript实现
+- 无依赖，原生 JavaScript 实现
 
 ### 安装
 
-直接在HTML中引入 `div-scroller.js` 文件：
+直接在 HTML 中引入 `div-scroller.js` 文件：
 
 ```html
 <script src="https://unpkg.com/useful-cool-js@latest/div-scroller.js"></script>
@@ -201,13 +215,13 @@ Vue.use(DynamicCounterVue, {
 
 ### 使用方法
 
-#### HTML结构
+#### HTML 结构
 
 ```html
 <div class="scroll-container">
-    <div class="scroll-item">内容1</div>
-    <div class="scroll-item">内容2</div>
-    <div class="scroll-item">内容3</div>
+  <div class="scroll-item">内容1</div>
+  <div class="scroll-item">内容2</div>
+  <div class="scroll-item">内容3</div>
 </div>
 ```
 
@@ -215,9 +229,9 @@ Vue.use(DynamicCounterVue, {
 
 ```javascript
 const scroller = new DivScroller({
-    container: document.querySelector('.scroll-container'), // 容器元素
-    speed: 1,  // 可选，滚动速度，默认1
-    direction: 'right'  // 可选，初始滚动方向，默认right
+  container: document.querySelector(".scroll-container"), // 容器元素
+  speed: 1, // 可选，滚动速度，默认1
+  direction: "right", // 可选，初始滚动方向，默认right
 });
 
 // 开始滚动
@@ -226,18 +240,18 @@ scroller.start();
 
 ### 配置选项
 
-| 参数      | 类型     | 默认值  | 说明                           |
-|-----------|----------|---------|--------------------------------|
-| container | Element  | -       | 容器元素（必填）               |
-| speed     | Number   | 1       | 滚动速度                       |
-| direction | String   | 'right' | 初始滚动方向，可选 'left'/'right' |
+| 参数      | 类型    | 默认值  | 说明                              |
+| --------- | ------- | ------- | --------------------------------- |
+| container | Element | -       | 容器元素（必填）                  |
+| speed     | Number  | 1       | 滚动速度                          |
+| direction | String  | 'right' | 初始滚动方向，可选 'left'/'right' |
 
 ### 实例方法
 
-| 方法名         | 说明                     |
-|---------------|--------------------------|
-| start()       | 开始滚动                 |
-| stop()        | 停止滚动                 |
+| 方法名                  | 说明                         |
+| ----------------------- | ---------------------------- |
+| start()                 | 开始滚动                     |
+| stop()                  | 停止滚动                     |
 | setDirection(direction) | 设置滚动方向('left'/'right') |
 
 ### 交互说明
@@ -249,25 +263,25 @@ scroller.start();
 
 ### 注意事项
 
-1. 容器元素需要设置固定宽度或100%宽度
+1. 容器元素需要设置固定宽度或 100%宽度
 2. 内容元素会被自动克隆以实现无缝滚动效果
 3. 插件不会干预容器和内容的样式，开发者可以自由设置样式
 
-## Card3D 卡片3D效果插件
+## Card3D 卡片 3D 效果插件
 
-一个轻量级的卡片3D悬浮效果插件，根据鼠标位置实现卡片的3D倾斜效果。
+一个轻量级的卡片 3D 悬浮效果插件，根据鼠标位置实现卡片的 3D 倾斜效果。
 
 ### 特性
 
-- 根据鼠标位置实现卡片3D倾斜效果
+- 根据鼠标位置实现卡片 3D 倾斜效果
 - 支持多个卡片同时使用
 - 可自定义最大旋转角度
 - 平滑的动画过渡效果
-- 无依赖，原生JavaScript实现
+- 无依赖，原生 JavaScript 实现
 
 ### 安装
 
-直接在HTML中引入 `card-3d.js` 文件：
+直接在 HTML 中引入 `card-3d.js` 文件：
 
 ```html
 <script src="https://unpkg.com/useful-cool-js@latest/card-3d.js"></script>
@@ -275,7 +289,7 @@ scroller.start();
 
 ### 使用方法
 
-#### HTML结构
+#### HTML 结构
 
 ```html
 <!-- 添加带有card-3d类名的元素 -->
@@ -294,15 +308,15 @@ new Card3D();
 
 // 或者自定义配置
 new Card3D({
-    rotation: 12  // 自定义最大旋转角度
+  rotation: 12, // 自定义最大旋转角度
 });
 ```
 
 ### 配置选项
 
-| 参数     | 类型   | 默认值 | 说明           |
-|----------|--------|--------|----------------|
-| rotation | Number | 10     | 最大旋转角度   |
+| 参数     | 类型   | 默认值 | 说明         |
+| -------- | ------ | ------ | ------------ |
+| rotation | Number | 10     | 最大旋转角度 |
 
 ### 样式建议
 
@@ -310,18 +324,18 @@ new Card3D({
 
 ```css
 .card-3d {
-    /* 基础尺寸 */
-    width: 300px;
-    height: 200px;
-    
-    /* 玻璃态效果 */
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border-radius: 15px;
-    
-    /* 阴影和边框 */
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+  /* 基础尺寸 */
+  width: 300px;
+  height: 200px;
+
+  /* 玻璃态效果 */
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+
+  /* 阴影和边框 */
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 ```
 

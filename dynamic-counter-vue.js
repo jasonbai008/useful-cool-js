@@ -1,12 +1,15 @@
 /**
  * DynamicCounterVue - Vue2数字动画计数器指令插件
  * 一个轻量级的数字递增/递减动画Vue指令
+ * 
+ * Author: Jason Bai <byygkcg@163.com>
+ * Github: https://github.com/jasonbai008/useful-cool-js
  *
  * 使用方法:
  *
  * 1. 引入并注册插件:
  *
- *    import DynamicCounterVue from 'useful-cool-js/dynamic-counter-vue'
+ *    import 'useful-cool-js/dynamic-counter-vue.js'
  *
  *    Vue.use(DynamicCounterVue, {
  *        duration: 2,           // 可选，动画持续时间（秒），默认2秒
@@ -101,11 +104,3 @@ const DynamicCounterVue = {
     });
   },
 };
-
-// 暴露到全局
-window.DynamicCounterVue = DynamicCounterVue;
-
-if (typeof module !== "undefined" && module.exports) {
-  // CommonJS 环境
-  module.exports = DynamicCounterVue;
-}

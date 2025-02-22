@@ -193,3 +193,5 @@ class SmoothScroller {
     }
   }
 }
+
+window.SmoothScroller = SmoothScroller;

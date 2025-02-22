@@ -104,3 +104,5 @@ const DynamicCounterVue = {
     });
   },
 };
+
+window.DynamicCounterVue = DynamicCounterVue;

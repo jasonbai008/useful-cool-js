@@ -150,3 +150,5 @@ class DivScroller {
     this.animationFrameId = requestAnimationFrame(() => this.scroll());
   }
 }
+
+window.DivScroller = DivScroller;

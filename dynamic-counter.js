@@ -120,3 +120,5 @@ class DynamicCounter {
     }
   }
 }
+
+window.DynamicCounter = DynamicCounter;

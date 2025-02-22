@@ -95,3 +95,5 @@ class Card3D {
     });
   }
 }
+
+window.Card3D = Card3D;

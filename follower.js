@@ -168,3 +168,4 @@ class Follower {
     Follower.instance = null;
   }
 }
+window.Follower = Follower;

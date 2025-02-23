@@ -1,5 +1,5 @@
 /**
- * DivScroller - 双向滚动走马灯插件
+ * Scroller - 双向滚动走马灯插件
  *
  * Author: Jason Bai <byygkcg@163.com>
  * Github: https://github.com/jasonbai008/useful-cool-js
@@ -8,13 +8,13 @@
  *
  * 1. 引入此JS文件
  * // 普通引入
- * <script src="https://unpkg.com/useful-cool-js@latest/div-scroller.js"></script>
+ * <script src="https://unpkg.com/useful-cool-js@latest/scroller.js"></script>
  *
  * // 模块化引入
- * import 'useful-cool-js/div-scroller.js'
+ * import 'useful-cool-js/scroller.js'
  *
  * 2. 创建实例：
- *    const scroller = new DivScroller({
+ *    const scroller = new Scroller({
  *      container: document.querySelector('.scroll-container'), // 容器元素
  *      speed: 1, // 可选，滚动速度，默认1
  *      direction: 'right' // 可选，初始滚动方向，默认right
@@ -26,7 +26,7 @@
  *    scroller.setDirection('left'/'right') - 设置滚动方向
  */
 
-class DivScroller {
+class Scroller {
   constructor(options) {
     // 初始化配置
     this.container = options.container;
@@ -151,4 +151,4 @@ class DivScroller {
   }
 }
 
-window.DivScroller = DivScroller;
+window.Scroller = Scroller;

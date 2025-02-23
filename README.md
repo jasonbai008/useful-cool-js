@@ -2,7 +2,7 @@
 
 a collection of cool js tools
 
-## 统一使用示例
+## 引入方式
 
 1. CND 引入：
 
@@ -10,7 +10,7 @@ a collection of cool js tools
 <script src="https://unpkg.com/useful-cool-js@latest/follower.js"></script>
 ```
 
-2. 模块化儿引入：
+2. ES Module 方式引入：
 
 ```sh
 npm install useful-cool-js
@@ -23,10 +23,10 @@ import "useful-cool-js/follower.js";
 ## Plugins
 
 1. [Follower 鼠标跟随插件](#鼠标跟随插件)
-2. [Smooth Scroller 平滑滚动插件](#平滑滚动插件)
-3. [Dynamic Counter 数字动画插件](#数字动画插件)
-4. [Dynamic Counter Vue 数字动画插件 Vue 版](#数字动画插件Vue版)
-5. [Div Scroller 双向跑马灯插件](#双向跑马灯插件)
+2. [Smoother 平滑滚动插件](#平滑滚动插件)
+3. [Counter 数字动画插件](#数字动画插件)
+4. [Counter Vue 数字动画插件 Vue 版](#数字动画插件Vue版)
+5. [Scroller 双向走马灯插件](#双向走马灯插件)
 6. [Card3D 卡片 3D 效果插件](#Card3D-卡片3D效果插件)
 
 ## 鼠标跟随插件
@@ -99,10 +99,10 @@ follower.destroy(); // 销毁实例
 ### 使用方式
 
 ```html
-<script src="https://unpkg.com/useful-cool-js@latest/smooth-scroller.js"></script>
+<script src="https://unpkg.com/useful-cool-js@latest/smoother.js"></script>
 <script>
   // 实例化平滑滚动插件
-  new SmoothScroller({
+  new Smoother({
     friction: 0.9, // 可选，速度衰减系数，值越小衰减越快（惯性小），建议范围：0.85-0.95
     sensitivity: 0.12, // 可选，滚动灵敏度，值越小滚动越慢，建议范围：0.08-0.15
   });
@@ -123,10 +123,10 @@ follower.destroy(); // 销毁实例
 
 ### 安装
 
-直接在 HTML 中引入 `dynamic-counter.js` 文件：
+直接在 HTML 中引入 `counter.js` 文件：
 
 ```html
-<script src="https://unpkg.com/useful-cool-js@latest/dynamic-counter.js"></script>
+<script src="https://unpkg.com/useful-cool-js@latest/counter.js"></script>
 ```
 
 ### 使用方法
@@ -152,7 +152,7 @@ follower.destroy(); // 销毁实例
 #### 初始化
 
 ```javascript
-new DynamicCounter({
+new Counter({
   duration: 2, // 可选，动画持续时间（秒），默认2秒
   formatThousands: true, // 可选，是否使用千分符，默认true
 });
@@ -175,9 +175,9 @@ new DynamicCounter({
 
 ```js
 import Vue from "vue";
-import DynamicCounterVue from "useful-cool-js/dynamic-counter-vue";
+import CounterVue from "useful-cool-js/counter-vue";
 
-Vue.use(DynamicCounterVue, {
+Vue.use(CounterVue, {
   duration: 2, // 可选，动画持续时间（秒），默认2秒
   formatThousands: true, // 可选，是否使用千分符，默认true
 });
@@ -192,7 +192,7 @@ Vue.use(DynamicCounterVue, {
 <span v-counter:2="price"></span>
 ```
 
-## 双向跑马灯插件
+## 双向走马灯插件
 
 一个轻量级的双向滚动走马灯插件，支持鼠标滚轮控制方向，自动无缝滚动，鼠标悬停暂停等功能。
 
@@ -207,10 +207,10 @@ Vue.use(DynamicCounterVue, {
 
 ### 安装
 
-直接在 HTML 中引入 `div-scroller.js` 文件：
+直接在 HTML 中引入 `scroller.js` 文件：
 
 ```html
-<script src="https://unpkg.com/useful-cool-js@latest/div-scroller.js"></script>
+<script src="https://unpkg.com/useful-cool-js@latest/scroller.js"></script>
 ```
 
 ### 使用方法
@@ -228,7 +228,7 @@ Vue.use(DynamicCounterVue, {
 #### 初始化
 
 ```javascript
-const scroller = new DivScroller({
+const scroller = new Scroller({
   container: document.querySelector(".scroll-container"), // 容器元素
   speed: 1, // 可选，滚动速度，默认1
   direction: "right", // 可选，初始滚动方向，默认right

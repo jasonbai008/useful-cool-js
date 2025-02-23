@@ -6,13 +6,13 @@
  * 
  * 使用方法:
  * // 普通引入
- * <script src="https://unpkg.com/useful-cool-js@latest/smooth-scroller.js"></script>
+ * <script src="https://unpkg.com/useful-cool-js@latest/smoother.js"></script>
  *
  * // 模块化引入
- * import 'useful-cool-js/smooth-scroller.js'
+ * import 'useful-cool-js/smoother.js'
  * 
  * 插件内部默认配置参数：
- * new SmoothScroller({
+ * new Smoother({
  *   friction: 0.9,     // 可选，速度衰减系数
  *   sensitivity: 0.12   // 可选，滚动灵敏度
  * });
@@ -40,7 +40,7 @@
  * 平滑滚动插件 (Smooth Scroll Plugin)
  * 优化版本 - 使用改进的滚动算法实现更流畅的效果
  */
-class SmoothScroller {
+class Smoother {
   constructor(options = {}) {
     // 初始化变量
     this.currentY = window.pageYOffset;
@@ -194,4 +194,4 @@ class SmoothScroller {
   }
 }
 
-window.SmoothScroller = SmoothScroller;
+window.Smoother = Smoother;

@@ -1,5 +1,5 @@
 /**
- * DynamicCounter - 数字动画计数器插件
+ * Counter - 数字动画计数器插件
  * 一个轻量级的数字递增/递减动画插件，支持千分符格式化和小数点精度设置
  *
  * Author: Jason Bai <byygkcg@163.com>
@@ -7,15 +7,15 @@
  *
  * 使用方法:
  * 1. 引入方式:
- *    <script src="https://unpkg.com/useful-cool-js@latest/dynamic-counter.js"></script>
+ *    <script src="https://unpkg.com/useful-cool-js@latest/counter.js"></script>
  *    或：
- *    import 'useful-cool-js/dynamic-counter.js'
+ *    import 'useful-cool-js/counter.js'
  *
  * 2. HTML结构:
  *    <span class="counter" data-target="876.50" data-precision="2"></span>
  *
  * 3. 初始化:
- *    new DynamicCounter({
+ *    new Counter({
  *        duration: 2,           // 可选，动画持续时间（秒），默认2秒
  *        formatThousands: true  // 可选，是否使用千分符，默认true
  *    });
@@ -43,7 +43,7 @@
  *    - 无依赖，原生JavaScript实现
  */
 
-class DynamicCounter {
+class Counter {
   constructor(options = {}) {
     // 默认配置参数
     this.defaults = {
@@ -121,4 +121,4 @@ class DynamicCounter {
   }
 }
 
-window.DynamicCounter = DynamicCounter;
+window.Counter = Counter;

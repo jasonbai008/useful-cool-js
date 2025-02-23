@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dynamic Counter Demo</title>
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+    <title>Counter Demo</title>
     <!-- 添加样式 -->
     <style>
         body {
@@ -93,7 +94,7 @@
 <body>
     <div class="wrapper">
         <div class="page-title">
-            <h1>Dynamic Counter Demo</h1>
+            <h1>Counter Demo</h1>
             <p>一个支持数字动画效果的计数器插件</p>
         </div>
         <!-- 使用flex布局容器包裹计数器 -->
@@ -117,10 +118,10 @@
     </div>
 
     <!-- 引入插件 -->
-    <script src="../dynamic-counter.js"></script>
+    <script src="../counter.js"></script>
     <script>
         // 初始化插件
-        new DynamicCounter({
+        new Counter({
             duration: 2,
             formatThousands: true
         });   
